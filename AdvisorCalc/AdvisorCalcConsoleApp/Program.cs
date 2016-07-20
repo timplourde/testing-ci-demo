@@ -8,7 +8,7 @@ namespace AdvisorCalcConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hit a key to start...");
-            Console.ReadKey();
+            Console.ReadKey(); 
 
             var investors = new[]
             {
