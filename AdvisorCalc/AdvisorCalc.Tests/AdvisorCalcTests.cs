@@ -37,6 +37,15 @@ namespace AdvisorCalc.Tests
             // the junior's commission will be 50 % of the senior's commission
             Assert.Equal(0.5m, juniorCommission / seniorCommission);
         }
-        
+
+        [Theory]
+        [InlineData(AdvisorRank.Junior, 4325)]
+        [InlineData(AdvisorRank.Senior, 8650)]
+        public void CommissionsAreCorrectForAdvisorRank(AdvisorRank rank, decimal expectedCommission)
+        {
+            var actualCommission = CommissionCalculator.CalculateCommission(rank, _investors);
+
+            Assert.Equal(expectedCommission, actualCommission);
+        }
     }
 }
