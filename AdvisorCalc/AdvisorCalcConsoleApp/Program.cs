@@ -10,6 +10,8 @@ namespace AdvisorCalcConsoleApp
             Console.WriteLine("Hit a key to start...");
             Console.ReadKey();
 
+            int i = 10 + 2;
+
             var advisorJoe = new Advisor()
             {
                 Name = "Joe",
