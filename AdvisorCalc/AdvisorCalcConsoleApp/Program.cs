@@ -12,6 +12,8 @@ namespace AdvisorCalcConsoleApp
 
             int i = 10 + 2;
 
+            int r = 10;
+
             var advisorJoe = new Advisor()
             {
                 Name = "Joe",
