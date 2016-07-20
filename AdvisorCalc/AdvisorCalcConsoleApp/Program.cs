@@ -10,18 +10,6 @@ namespace AdvisorCalcConsoleApp
             Console.WriteLine("Hit a key to start...");
             Console.ReadKey();
 
-            var advisorJoe = new Advisor()
-            {
-                Name = "Joe",
-                Rank = AdvisorRank.Junior
-            };
-
-            var advisorSusan = new Advisor()
-            {
-                Name = "Susan",
-                Rank = AdvisorRank.Senior
-            };
-
             var investors = new[]
             {
                 new Investor
@@ -38,13 +26,13 @@ namespace AdvisorCalcConsoleApp
                 }
             };
 
-            var joeCommission = CommissionCalculator.CalculateCommission(advisorJoe, investors);
+            var joeCommission = CommissionCalculator.CalculateCommission(AdvisorRank.Junior, investors);
 
-            Console.WriteLine($"Joe made {joeCommission.ToString("C")} in commission");
+            Console.WriteLine($"Junior advisor commission: {joeCommission.ToString("C")}");
 
-            var susanCommission = CommissionCalculator.CalculateCommission(advisorSusan, investors);
+            var susanCommission = CommissionCalculator.CalculateCommission(AdvisorRank.Senior, investors);
 
-            Console.WriteLine($"Sue made {susanCommission.ToString("C")} in commission");
+            Console.WriteLine($"Senior advisor commission: {susanCommission.ToString("C")}");
 
             Console.WriteLine("All done, hit a key to end.");
             Console.ReadKey();

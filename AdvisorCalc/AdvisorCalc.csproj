@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Advisor.cs" />
+    <Compile Include="AdvisorRank.cs" />
     <Compile Include="CommissionCalculator.cs" />
     <Compile Include="Investor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
