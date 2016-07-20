@@ -1,39 +1,32 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AdvisorCalc
 {
-    public class CommissionCalculator
+    public static class CommissionCalculator
     {
         public static decimal CalculateCommission(AdvisorRank advisorRank, IEnumerable<Investor> investors)
         {
-            decimal commission = 0;
+            return investors
+                    .Sum(i => i.Fee())
+                    .AdjustedByRank(advisorRank);
+        }
 
-            foreach(var investor in investors)
+        private static decimal AdjustedByRank(this decimal commission, AdvisorRank advisorRank)
+        {
+            switch (advisorRank)
             {
-                decimal bps = 0;
-
-                if(investor.TotalAssets < 500000)
-                {
-                    bps = 5;
-                }
-                else if (investor.TotalAssets < 2000000)
-                {
-                    bps = 10;
-                }
-                else
-                {
-                    bps = 15;
-                }
-                commission += investor.TotalAssets * 0.0001m * bps;
+                case AdvisorRank.Junior:
+                    return commission * 0.5m;
+                case AdvisorRank.Experienced:
+                    return commission * 0.75m;
+                case AdvisorRank.Senior:
+                    return commission;
+                default:
+                    throw new Exception("Unknown rank!");
             }
-
-            if(advisorRank == AdvisorRank.Junior)
-            {
-                return commission * 0.5m;
-            }
-
-            return commission;
         }
     }
 }
